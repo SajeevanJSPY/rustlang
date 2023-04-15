@@ -1,10 +1,11 @@
-// Source Code ---> AST (Abstract Syntax Tree)
-
+use rustlang_lexer::tokenize;
 use std::fs;
 
-const FILE: &'static str = "files/rust.rs";
+const FILE_NAME: &'static str = "files/test.rs";
 
 fn main() {
-    let source_file = fs::read_to_string(FILE).unwrap();
-    println!("{:?}", source_file);
+    let source_file = fs::read_to_string(FILE_NAME).unwrap();
+    for token in tokenize(&source_file) {
+        println!("{:?}", token);
+    }
 }
